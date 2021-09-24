@@ -1,0 +1,35 @@
+
+
+    #bodyTable{
+
+        background-color: #64938c;
+
+
+    }
+.foot{
+    padding:25px 50px 25px 50px;
+}
+
+#example_filter {
+    padding-right: 10%;
+}
+
+#example_length {
+    text-align: right;
+    margin-bottom: 10px;
+    width: 100%;
+    padding-right: 13%;
+}
+
+#example_info {
+    padding-left: 13%;
+}
+
+
+#example_filter {
+    margin-right: 33px;
+}
+
+#example_paginate {
+    margin-right: 12%;
+}

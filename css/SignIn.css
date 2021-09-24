@@ -1,0 +1,45 @@
+body {
+    background-image: url("../img/zaini-izzuddin-55btQzyDiO8-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.card {
+    background: rgba(0, 0, 0, 0.72);
+    margin: 0;
+    /*background: transparent;*/
+}
+
+
+#togglePassword {
+    margin-left: -3px;
+    /*cursor: pointer;*/
+    border: 1px solid #010303;
+    background-color: white;
+    margin-right: 0;
+    border-left: 1px solid white;
+    padding-right: 13px;
+}
+
+input[type="password"],input[type="password"]:focus-visible {
+    border: 1px solid #c17ea2;
+
+}
+
+input[type="text"] {
+    border: 1px solid #000000;
+}
+
+.container {
+    margin-top: 10%;
+}
+
+button:focus {
+    outline: white;
+}
+
+span {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.91), 0 6px 20px 0 rgba(0, 0, 0, 0.95);
+
+}

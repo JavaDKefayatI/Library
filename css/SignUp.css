@@ -1,0 +1,30 @@
+    body {
+        margin-top: 80px;
+        background-image: url("../img/caleb-woods-fulXJYIvRi8-unsplash.jpg");
+        /*background-position: ;*/
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+.card {
+    background: rgba(0, 0, 0, 0.72);
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.container{
+    margin-top: 3%;
+}
+.alert{
+margin-left:11% ;
+    display: none;
+}
+h4{
+
+
+}
