@@ -1,24 +1,7 @@
 <?php
-include "includes/Functions_inc.php";
-include "includes/Config_inc.php";
-include "includes/Users.php";
-$func = new Functions_inc();
-
-$user = new Users();
-$db = new Config_inc("library");
-
-try {
-    if ($user->isLogIn($db))
-        header('Location:sign/SignIn.php');
-
-} catch (Exception $e) {
-
-}
-
 include "Header.php";
-
-
 ?>
+
 <script>
     setTitle("title", "Library")
     setTable()

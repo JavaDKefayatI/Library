@@ -39,7 +39,7 @@ class Users
      * @param string $phone Give from user
      * @return string if sign up hasn't any alert is true
      */
-    public static function signUp(Config_inc $db, string $name, string $family, string $user, string $pass1,
+    public static function signUp(Functions_inc $func, Config_inc $db, string $name, string $family, string $user, string $pass1,
                                   string $pass2, string $email, string $phone): string
     {
         $name = Functions_inc::test_input($name);
