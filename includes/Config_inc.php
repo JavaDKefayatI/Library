@@ -187,21 +187,7 @@ class Config_inc
     }
 
 
-    public function lastVersion($table_name, $column_name): int
-    {
-        try {
-            $query = "SELECT MAX(" . $column_name . ") FROM " . $table_name;
 
-            $statement = $this->connect->query($query);
-            // get and send all publishers
-            return $statement->fetchAll(PDO::FETCH_ASSOC)[0]["MAX(" . $column_name . ")"];
-
-        } catch (PDOException $e) {
-            throw $e;
-        }
-
-
-    }
 
     /**
      * @param array $state The input format must be similar to ['firstname'=>'jack', ... ]
