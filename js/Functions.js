@@ -147,10 +147,6 @@ function removeSpace(id_field) {
     });
 }
 
-function logOut() {
-    document.cookie = "javad=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
-
-}
 
 function setTitle(id_title, title) {
     $(document).ready(function () {
