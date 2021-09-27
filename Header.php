@@ -26,11 +26,13 @@
     include "includes/Functions_inc.php";
     include "includes/Users.php";
     include "includes/Books.php";
+    include "includes/Version.php";
 
     $func = new Functions_inc();
     $user = new Users();
     $db = new Config_inc("library");
     $books = new Books();
+    $version = new Version();
 
     try {
         if ($user->isLogIn($db))
