@@ -3,6 +3,7 @@
 class Config_inc
 {
     public PDO $connect;
+    private static string $server = "http://localhost/";
 
     /**
      * Connect constructor.
@@ -187,8 +188,6 @@ class Config_inc
     }
 
 
-
-
     /**
      * @param array $state The input format must be similar to ['firstname'=>'jack', ... ]
      * @return string The output format is similar to name='jack' or id=2
@@ -312,4 +311,14 @@ class Config_inc
         }
         return $str;
     }
+
+    /**
+     * @return string
+     */
+    public static function getServer(): string
+    {
+        return self::$server;
+    }
+
+
 }

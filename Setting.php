@@ -2,18 +2,14 @@
 
 include "Header.php";
 $lastVersion = $version->lastVersion($db, "version", "numberVersion");
-$checkUpdate = isset($_POST['update-i']);
-if ($checkUpdate) {
 
-    move_uploaded_file("../Server/se.php", "../Download");
-}
 ?>
 
 
 <main class="my-4 ">
 
     <div class="w3-container">
-        <h2 id="ver">Last version :
+        <h2 id="ver">Current version :
         </h2>
 
         <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success btn-lg  ">
@@ -31,7 +27,7 @@ if ($checkUpdate) {
                 <div id="update"></div>
                 <div class="w3-container w3-border-top py-2 w3-light-grey">
                     <button onclick="document.getElementById('id01').style.display='none'" type="button"
-                                class="btn btn-danger">Cancel
+                            class="btn btn-danger">Cancel
                     </button>
 
                 </div>
@@ -54,7 +50,5 @@ if ($checkUpdate) {
 
 
 <?php
-
 include "Footer.php";
-
 ?>
