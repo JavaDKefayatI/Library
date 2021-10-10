@@ -1,12 +1,5 @@
 <?php
-include "includes/Functions_inc.php";
-$func = new Functions_inc();
-try {
-    if ($func->isLogIn())
-        header('Location:SignIn.php');
 
-} catch (Exception $e) {
-}
 
 include "Header.php";
 

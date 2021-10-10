@@ -1,9 +1,11 @@
 <?php
 include 'Config_inc.php';
 include 'Users.php';
+include 'Version.php';
 
 $db = new Config_inc("library");
 $user = new Users();
+$version = new Version();
 try {
     if ($user->isLogIn($db))
         header('Location:sign/SignIn.php');
@@ -19,7 +21,7 @@ if (isset($_GET['index'])) {
 
         case 1:
             //information that we need
-            $requestBook = $db->selectOrSearch("requestbook", ["*"], "state=1");
+            $requestBook = $db->selectOrSearch("requestbook", ["*"]);
             $books = $db->selectOrSearch("books", ["*"]);
             echo(json_encode(["requestBook" => $requestBook, "book" => $books]));
             break;
@@ -28,8 +30,14 @@ if (isset($_GET['index'])) {
             $books = $db->selectOrSearch("books", ['*']);
             echo(json_encode($books));
             break;
-
+//information site and versions
         case 3:
+
+            $versions = $db->selectOrSearch("version", ["*"]);
+            echo json_decode( include "api/package.json");
+//            echo(json_encode(["informationSite" => include "api/", "versions" => $versions]));
+            break;
+        case 4:
 
     }
 }

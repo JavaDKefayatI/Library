@@ -147,10 +147,6 @@ function removeSpace(id_field) {
     });
 }
 
-function logOut() {
-    document.cookie = "javad=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
-
-}
 
 function setTitle(id_title, title) {
     $(document).ready(function () {
@@ -197,6 +193,69 @@ function setTable() {
     })
 
 }
+
+function book(id) {
+
+    $(document).ready(function () {
+
+        $('#example').DataTable();
+        let place = document.getElementById(id)
+        $.ajax({
+            type: 'POST',
+            url: 'includes/ajax.php?index=2',
+            data: 'id=testdata',
+            cache: false,
+            success: function (result) {
+                const books = JSON.parse(result);
+
+                let t = $('#example').DataTable();
+
+                for (let k in books) {
+
+                    place.innerHTML += `<p>${books[k]["Id"]},
+                        ,  ${books[k]["Name"]}
+                           ,  ${books[k]["Author"]}
+                           ,  ${books[k]["Year"]}</p><br>`;
+                }
+            },
+
+        });
+    })
+
+
+}
+
+function updateVersion(id_for_alert, lastVersion) {
+
+    $(document).ready(function () {
+        let place = document.getElementById(id_for_alert);
+
+        $.ajax({
+            type: 'POST',
+            url: 'api/information.json',
+            data: 'id=testdata',
+            cache: false,
+            success: function (information) {
+
+                if (information["lastVersion"] > lastVersion) {
+                    place.innerHTML = ` <form class="w3-container " method="post" name="update-f">
+  <p class="ml-3"> Are you sure for update this site?</p>         
+<input type="submit" value="update" class="w3-button w3-block w3-green w3-section w3-padding"  name="update-i">
+                </form>
+                    `
+                } else
+                    place.innerHTML = ` 
+                       <p class="ml-3"> This version is last version</p>                    
+                    `
+            }
+
+        });
+
+    })
+
+
+}
+
 
 
 
