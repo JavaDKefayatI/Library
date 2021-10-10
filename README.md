@@ -1,2 +1,2 @@
 # firstProj
-this project is library 
+this project is library
