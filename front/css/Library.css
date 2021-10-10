@@ -1,13 +1,13 @@
 
+#bodyTable {
 
-    #bodyTable{
-
-        background-color: #64938c;
+    background-color: #64938c;
 
 
-    }
-.foot{
-    padding:25px 50px 25px 50px;
+}
+
+.foot {
+    padding: 25px 50px 25px 50px;
 }
 
 #example_filter {

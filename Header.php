@@ -7,7 +7,7 @@
     <script src="https://code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>
     <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css"/>
-    <link rel="shortcut icon" type="image/x-icon" href="img/768px-Closed_Book_Icon.svg.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="front/img/768px-Closed_Book_Icon.svg.ico"/>
     <link rel="stylesheet" href=
     "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js" type="text/javascript"></script>
@@ -18,9 +18,9 @@
     <script src="//maxcdn.bootstrapcdn.com/boot strap/4.1.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <!--    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
-    <script src="js/Functions.js"></script>
+    <script src="front/js/Functions.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.2/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="css/Library.css">
+    <link rel="stylesheet" href="front/css/Library.css">
     <?php
     include "includes/Config_inc.php";
     include "includes/Functions_inc.php";

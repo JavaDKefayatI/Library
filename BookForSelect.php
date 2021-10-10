@@ -3,7 +3,7 @@ include "Header.php";
 if (isset($_POST['request']))
     echo $_POST['request'];
 ?>
-  <script src="js/BooksForRequest.js"></script>
+  <script src="front/js/BooksForRequest.js"></script>
 <script>
     setTitle("title", "Library")
     table('tb')
