@@ -1,10 +1,18 @@
 <?php
 include "../includes/Config_inc.php";
+/**
+ * this part is version1
+ */
+
+
+// Create connect for database
+$db = new Config_inc("library");
 
 // Create table version
 $db->createTable('version',
     ["numberVersion int(6) NOT NULL",
         "TimeOfSet datetime(6) NOT NULL DEFAULT current_timestamp(6)"]);
+
 
 $db->insert("version",['numberVersion'],[1]);
 
@@ -21,7 +29,12 @@ $db->createTable('books',
 $db->insert("books", ['Name', 'Year', 'Author'], ['David', '2021-08-30', 'Jalal']);
 $db->insert("books", ['Name', 'Year', 'Author'], ['Good bye party', '1380-02-01', 'jafar']);
 $db->insert("books", ['Name', 'Year', 'Author'], ['Kazem', '1230-02-01', 'ba']);
-$db->insert("books", ['Name', 'Year', 'Author'], ['ebram', '1300-01-02', 'hadi']);
+$db->insert("books", ['Name', 'Year', 'Author'], ['kamal', '1300-01-02', 'hadi']);
+$db->insert("books", ['Name', 'Year', 'Author'], ['kazem', '13hadi00-01-02', 'royah']);
+$db->insert("books", ['Name', 'Year', 'Author'], ['kashan', '1300-01-02', 'rahmani']);
+$db->insert("books", ['Name', 'Year', 'Author'], ['reza', '1300-01-02', 'karimi']);
+$db->insert("books", ['Name', 'Year', 'Author'], ['reza', '1300-01-02', 'karimi']);
+$db->insert("books", ['Name', 'Year', 'Author'], ['gholam', '1300-01-02', 'kabiri']);
 
 // Create table users
 
@@ -55,4 +68,6 @@ $db->createTable('requestbook',
         "nameBook varchar(100) NOT NULL",
         "author varchar(100) NOT NULL",
         "status int(10) NOT NULL"]);
+
+
 
