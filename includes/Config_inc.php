@@ -3,7 +3,7 @@
 class Config_inc
 {
     public PDO $connect;
-    private static string $server = "http://localhost/";
+    private static string $server = "http://localhost:8080/";
 
     /**
      * Connect constructor.
