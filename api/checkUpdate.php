@@ -2,21 +2,20 @@
 
 // From URL to get webpage contents.
 include "../includes/Config_inc.php";
+include "../includes/Version.php";
 
-$url = Config_inc::getServer()."/server/api.php";
+$connect = new Config_inc('library');
+$version = new Version();
 
-// Initialize a CURL session.
-$ch = curl_init();
-
-// Return Page contents.
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-//grab URL and pass it to the variable.
-curl_setopt($ch, CURLOPT_URL, $url);
-
-$result = curl_exec($ch);
+//get current max version
+$current_v = $version->lastVersion($connect, "version", "numberVersion");
+//create url for connecting server
+$url = Config_inc::getServer() . "/server/api.php";
+// get information from server
+$result = $version::getSite($url);
 
 echo $result;
+
 
 
 
