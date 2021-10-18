@@ -14,7 +14,10 @@ $db->createTable('version',
         "TimeOfSet datetime(6) NOT NULL DEFAULT current_timestamp(6)"]);
 
 
-$db->insert("version",['numberVersion'],[1]);
+$db->alter("version", "`describe` TEXT NOT NULL", "TimeOfSet");
+$db->alter("version", "name varchar(35) NOT NULL ", "`describe`");
+
+$db->insert("version", ['numberVersion', '`describe`', 'name'], [1,'this base version','BaseVersion.php']);
 
 
 // Create table books
@@ -68,6 +71,8 @@ $db->createTable('requestbook',
         "nameBook varchar(100) NOT NULL",
         "author varchar(100) NOT NULL",
         "status int(10) NOT NULL"]);
+
+
 
 
 
