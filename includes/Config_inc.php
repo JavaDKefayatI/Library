@@ -59,12 +59,12 @@ class Config_inc
     {
 
         try {
-            $list_of_values = $this->setBool($list_of_values);
+            $list_of_values = self::setBool($list_of_values);
 
             //create query in this three line
             $query = "INSERT INTO " . $table_name;
             $query .= "(" . implode(",", $list_of_title) . ")";
-            $query .= "VALUES (" . $this->createImplode($list_of_values) . ")";
+            $query .= "VALUES (" . self::createImplode($list_of_values) . ")";
 
             $this->connect->query($query);
         } catch (PDOException $e) {
@@ -176,7 +176,7 @@ class Config_inc
             //create base form query
             $query = "UPDATE " . $table_name . " SET ";
             //add statement  for  change in database
-            $query .= $this->format($statement_for_change);
+            $query .= self::format($statement_for_change);
             //add condition  for  select in database
             $query .= " WHERE " . $condition;
 
@@ -193,7 +193,7 @@ class Config_inc
      * @return string The output format is similar to name='jack' or id=2
      */
 
-    function format(array $state): string
+    private static function format(array $state): string
     {
         $index = 0;
         $query = '';
@@ -267,7 +267,7 @@ class Config_inc
      * @uses convert [1,'name',true/false] to [1,'name',1/0]
      */
 
-    function setBool($arr)
+    private static function setBool($arr)
     {
 
         for ($i = 0; $i < count($arr); $i++) {
@@ -278,7 +278,7 @@ class Config_inc
         return $arr;
     }
 
-    function createImplode($arr): string
+    private static function  createImplode($arr): string
     {
         $str = "";
 
