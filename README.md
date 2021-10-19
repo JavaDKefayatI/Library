@@ -1,4 +1,2 @@
-# firstProj
-```
-this project is library 
-```
+# Library project
+The project is being completed
