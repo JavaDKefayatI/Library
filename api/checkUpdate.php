@@ -3,6 +3,8 @@
 include "../includes/Config_inc.php";
 include "../includes/Version.php";
 
+$zip = new ZipArchive();
+
 $connect = new Config_inc("library");
 $version = new Version();
 $version->setLastVersionFromDatabase($connect, "version", "numberVersion");
@@ -22,8 +24,9 @@ if ($is_update) {
     echo "JAVAD";
     //download file from server
     exec("wget ".Config_inc::getServer()."/server/uploads/".$version->getLastNewNameVersion());
-
 }
+else
+    echo "new version not found";
 
 
 ?>
