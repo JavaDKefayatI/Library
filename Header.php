@@ -30,7 +30,7 @@
 
     $func = new Functions_inc();
     $user = new Users();
-    $db = new Config_inc("library");
+    $db = new Config_inc("library2");
     $books = new Books();
     $version = new Version();
 

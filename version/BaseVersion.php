@@ -3,10 +3,9 @@ include "../includes/Config_inc.php";
 /**
  * this part is version1
  */
-include "includes/Config_inc.php";
 
 // Create connect for database
-$db = new Config_inc("library");
+$db = new Config_inc("library2");
 
 // Create table version
 $db->createTable('version',
