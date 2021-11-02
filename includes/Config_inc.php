@@ -3,7 +3,7 @@
 class Config_inc
 {
     public PDO $connect;
-    private static string $server = "http://localhost:8080/";
+    private static string $server = "http://localhost:80/";
 
     /**
      * Connect constructor.
@@ -259,6 +259,28 @@ class Config_inc
         }
 
     }
+    /**
+     * @param string $table
+     * @param string $column
+     * @param string $as
+     */
+
+    public function max(string $table, string $column, string $as = "max")
+    {
+
+        try {
+            $query = "SELECT MAX(" . $column . ") AS " . $as . "
+                        FROM " . $table;
+
+            $statement = $this->connect->query($query);
+            // get and send all publishers
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            throw $e;
+        }
+    }
+
 
 
     /**

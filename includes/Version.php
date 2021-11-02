@@ -16,11 +16,7 @@ class Version
     public function setLastVersionFromDatabase(Config_inc $db, string $table_name, string $column_name)
     {
         try {
-            $query = "SELECT MAX(" . $column_name . ") FROM " . $table_name;
-
-            $statement = $db->connect->query($query);
-            // get and send all publishers
-            $this->lastVersionInDatabase = $statement->fetchAll(PDO::FETCH_ASSOC)[0]["MAX(" . $column_name . ")"];
+       $this->lastVersionInDatabase =$db->max("version","numberVersion")[0]["max"];
 
         } catch (PDOException $e) {
             throw $e;
@@ -75,7 +71,7 @@ class Version
      * @param string $url
      * @return array
      */
-    public function versions(string $url): array
+    public function informationFromServer(string $url): array
     {
         // Initialize a CURL session.
         $ch = curl_init();
@@ -84,7 +80,6 @@ class Version
         //grab URL and pass it to the variable.
         curl_setopt($ch, CURLOPT_URL, $url);
         $server_information = curl_exec($ch);
-
         //create array from json and return
         return json_decode($server_information);
 

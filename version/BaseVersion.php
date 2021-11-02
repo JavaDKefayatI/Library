@@ -3,7 +3,7 @@ include "../includes/Config_inc.php";
 /**
  * this part is version1
  */
-
+include "includes/Config_inc.php";
 
 // Create connect for database
 $db = new Config_inc("library");
@@ -33,7 +33,7 @@ $db->insert("books", ['Name', 'Year', 'Author'], ['David', '2021-08-30', 'Jalal'
 $db->insert("books", ['Name', 'Year', 'Author'], ['Good bye party', '1380-02-01', 'jafar']);
 $db->insert("books", ['Name', 'Year', 'Author'], ['Kazem', '1230-02-01', 'ba']);
 $db->insert("books", ['Name', 'Year', 'Author'], ['kamal', '1300-01-02', 'hadi']);
-$db->insert("books", ['Name', 'Year', 'Author'], ['kazem', '13hadi00-01-02', 'royah']);
+$db->insert("books", ['Name', 'Year', 'Author'], ['kazem', '1300-01-02', 'royah']);
 $db->insert("books", ['Name', 'Year', 'Author'], ['kashan', '1300-01-02', 'rahmani']);
 $db->insert("books", ['Name', 'Year', 'Author'], ['reza', '1300-01-02', 'karimi']);
 $db->insert("books", ['Name', 'Year', 'Author'], ['reza', '1300-01-02', 'karimi']);

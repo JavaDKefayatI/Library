@@ -1,7 +1,6 @@
 <?php
 
 include "Header.php";
-$lastVersion = $version->lastVersion($db, "version", "numberVersion");
 
 ?>
 
@@ -47,7 +46,6 @@ $lastVersion = $version->lastVersion($db, "version", "numberVersion");
 
     })
 </script>
-
 
 <?php
 include "Footer.php";

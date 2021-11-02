@@ -1,20 +1,26 @@
-<pre>
 <?php
 include "../includes/Config_inc.php";
 include "../includes/Version.php";
 
 $connect = new Config_inc("library");
 $version = new Version();
-$version->setLastVersionFromDatabase($connect, "version", "numberVersion");
-//create url for connecting server
-$url = Config_inc::getServer() . "/server/api.php";
-//get current max version
-$current_v = $version->getLastVersionInDatabase();
 
+$version->setLastVersionFromDatabase($connect, "version", "numberVersion");
+
+//get current max version
+$maxVersion = $version->getLastVersionInDatabase();
+//create url for connecting server
+$url = Config_inc::getServer() . "/server/api/CheckUpdate.php?version=".$maxVersion;
 // get information from server
-$array_versions = $version->versions($url);
+var_dump( $version->informationFromServer($url));
 // check update
-$is_update = $version->checkVersion($current_v, $array_versions);
+
+//var_dump( $information[0]);
+die();
+if ($information[0][""])
+
+//var_dump($information);
+die();
 
 if ($is_update) {
     //set new information for version in database
@@ -27,4 +33,3 @@ if ($is_update) {
 
 
 ?>
-</pre>
