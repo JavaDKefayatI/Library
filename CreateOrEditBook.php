@@ -7,7 +7,7 @@ include "includes/Books.php";
 $func = new Functions_inc();
 $user = new Users();
 $books = new Books();
-$db = new Config_inc("library");
+$db = new Config_inc("library2");
 
 try {
     if ($user->isLogIn($db))

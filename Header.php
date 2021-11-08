@@ -15,10 +15,10 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css"/>
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/boot strap/4.1.1/js/bootstrap.min.js"></script>
+<!--    <script src="//maxcdn.bootstrapcdn.com/boot strap/4.1.1/js/bootstrap.min.js"></script>-->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <!--    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
-    <script src="front/js/Functions.js"></script>
+
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.2/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="front/css/Library.css">
     <?php
@@ -30,7 +30,7 @@
 
     $func = new Functions_inc();
     $user = new Users();
-    $db = new Config_inc("library");
+    $db = new Config_inc("library2");
     $books = new Books();
     $version = new Version();
 
@@ -57,9 +57,10 @@
     <button class="w3-bar-item w3-button w3-large bg-success w-100"
             onclick="w3_close()">Close &times;
     </button>
-    <a href="Library.php" class="w3-bar-item w3-button">Home</a>
-    <a href="Library.php" class="w3-bar-item w3-button">Books</a>
+    <a href="AllBook.php" class="w3-bar-item w3-button">Home</a>
+    <a href="AllBook.php" class="w3-bar-item w3-button">Books</a>
     <a href="RequestPage.php" class="w3-bar-item w3-button">Requests book</a>
+    <a href="LibraryAdmin.php" class="w3-bar-item w3-button">Edit and create book</a>
     <a href="#" class="w3-bar-item w3-button">About this site</a>
     <a href="Setting.php" class="w3-bar-item w3-button">Setting</a>
 </div>
