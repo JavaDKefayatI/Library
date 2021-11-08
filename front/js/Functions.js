@@ -164,7 +164,7 @@ function setTable() {
 
         $.ajax({
             type: 'POST',
-            url: 'includes/ajax.php?index=2',
+            url: 'api/Books.php',
             data: 'id=testdata',
             cache: false,
             success: function (result) {
@@ -172,11 +172,16 @@ function setTable() {
                 let t = $('#example').DataTable();
 
                 for (let k in books) {
+                    let status="Available";
+                    if (books[k]["status"]===1) status="wait";
+                    if (books[k]["status"]===2) status="Unavailable";
+
                     t.row.add([
                         books[k]["Id"],
                         books[k]["Name"],
                         books[k]["Author"],
                         books[k]["Year"],
+                        status,
                         ` <a href='CreateOrEditBook.php?id={$id}' class='mr-1'>
                         <button  class='fa fa-pencil btn bg-transparent  p-1 '>
                         </button>
