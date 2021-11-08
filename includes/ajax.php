@@ -3,7 +3,7 @@ include 'Config_inc.php';
 include 'Users.php';
 include 'Version.php';
 
-$db = new Config_inc("library");
+$db = new Config_inc("library2");
 $user = new Users();
 $version = new Version();
 try {
