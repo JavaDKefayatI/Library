@@ -4,9 +4,8 @@ include "../includes/Config_inc.php";
  * this part is version1
  */
 
-
 // Create connect for database
-$db = new Config_inc("library");
+$db = new Config_inc("library2");
 
 // Create table version
 $db->createTable('version',
@@ -29,11 +28,13 @@ $db->createTable('books',
         "Year date NOT NULL ",
         "Author varchar(35) NOT NULL "]);
 
+$db->alter("books","status int(5) default 0","Author");
+
 $db->insert("books", ['Name', 'Year', 'Author'], ['David', '2021-08-30', 'Jalal']);
 $db->insert("books", ['Name', 'Year', 'Author'], ['Good bye party', '1380-02-01', 'jafar']);
 $db->insert("books", ['Name', 'Year', 'Author'], ['Kazem', '1230-02-01', 'ba']);
 $db->insert("books", ['Name', 'Year', 'Author'], ['kamal', '1300-01-02', 'hadi']);
-$db->insert("books", ['Name', 'Year', 'Author'], ['kazem', '13hadi00-01-02', 'royah']);
+$db->insert("books", ['Name', 'Year', 'Author'], ['kazem', '1300-01-02', 'royah']);
 $db->insert("books", ['Name', 'Year', 'Author'], ['kashan', '1300-01-02', 'rahmani']);
 $db->insert("books", ['Name', 'Year', 'Author'], ['reza', '1300-01-02', 'karimi']);
 $db->insert("books", ['Name', 'Year', 'Author'], ['reza', '1300-01-02', 'karimi']);
@@ -63,14 +64,13 @@ $db->insert("users",
 $db->createTable('requestbook',
     [" id int(20) NOT NULL AUTO_INCREMENT",
         "PRIMARY KEY (`id`)",
+        "id_user int(20) NOT NULL",
         "id_book int(20) NOT NULL",
-        "name varchar(200) NOT NULL",
-        "family varchar(200) NOT NULL",
-        "username varchar(200) NOT NULL",
-        "email varchar(100) NOT NULL",
-        "nameBook varchar(100) NOT NULL",
-        "author varchar(100) NOT NULL",
-        "status int(10) NOT NULL"]);
+        "time_request datetime(6) NOT NULL DEFAULT current_timestamp(6)",
+        "time_accept datetime(6) NOT NULL ",
+        "time_return datetime(6) NOT NULL ",
+        "is_accept int(20) default 0",
+        "is_return int(20) default 0",]);
 
 
 
