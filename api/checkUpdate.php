@@ -1,33 +1,29 @@
-<pre>
-<?php
+c<?php
 include "../includes/Config_inc.php";
 include "../includes/Version.php";
 
-$zip = new ZipArchive();
+$connect = new Config_inc("library2");
 
-$connect = new Config_inc("library");
 $version = new Version();
+
 $version->setLastVersionFromDatabase($connect, "version", "numberVersion");
-//create url for connecting server
-$url = Config_inc::getServer() . "/server/api.php";
+
 //get current max version
-$current_v = $version->getLastVersionInDatabase();
+$maxVersion = $version->getLastVersionInDatabase();
 
+//create url for connecting server
+$url = Config_inc::getServer() . "/server/api/CheckUpdate.php?version=" . $maxVersion;
 // get information from server
-$array_versions = $version->versions($url);
+$information = $version->informationFromServer($url);
 // check update
-$is_update = $version->checkVersion($current_v, $array_versions);
 
-if ($is_update) {
+if ($information["status"] == 1) {
+
     //set new information for version in database
-    $version->setInformationInDatabase($connect, $array_versions);
-    echo "JAVAD";
-    //download file from server
-    exec("wget ".Config_inc::getServer()."/server/uploads/".$version->getLastNewNameVersion());
-}
-else
-    echo "new version not found";
-
+    $version->setInformationInDatabase($connect, $information);
+    $version->DownloadFileAndSet();
+    echo json_encode(["status" => 1]);
+} else
+    echo json_encode(["status" => 0]);
 
 ?>
-</pre>
