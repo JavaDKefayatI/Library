@@ -4,7 +4,7 @@ include "includes/Functions_inc.php";
 include "includes/Users.php";
 
 $user = new Users();
-$db = new Config_inc("library");
+$db = new Config_inc("library2");
 
 try {
     if ($user->isLogIn($db))
