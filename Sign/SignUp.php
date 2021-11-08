@@ -5,7 +5,7 @@ include "../includes/Functions_inc.php";
 include "../includes/Users.php";
 
 $func = new Functions_inc();
-$connect = new Config_inc("library");
+$connect = new Config_inc("library2");
 $alert = "";
 
 

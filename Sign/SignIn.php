@@ -5,7 +5,7 @@ include "../includes/Functions_inc.php";
 include "../includes/Users.php";
 
 $func = new Functions_inc();
-$db = new Config_inc("library");
+$db = new Config_inc("library2");
 
 try {
     if (Users::isLogOut())
