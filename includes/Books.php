@@ -102,6 +102,19 @@ class Books
         return $error;
     }
 
+
+    /**
+     * @param Config_inc $db
+     * @param string $id_book
+     * @return string status of input id
+     */
+
+    public function getStatus(Config_inc $db ,string $id_book):string{
+
+        return $db->selectOrSearch("books",["status"],"Id=".$id_book)[0]["status"];
+
+    }
+
     /**
      * @return string
      */
