@@ -7,7 +7,7 @@ $user = new Users();
 
 try {
     if ($user->isLogIn($connect))
-        header('Location:sign/SignIn.php');
+        header('Location:Sign/SignIn.php');
 
 } catch (Exception $e) {
 
