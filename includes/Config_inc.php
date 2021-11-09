@@ -89,6 +89,7 @@ class Config_inc
                 $query .= " WHERE " . $condition;
 
             $statement = $this->connect->query($query);
+
             // get and send all publishers
             return $statement->fetchAll(PDO::FETCH_ASSOC);
 
@@ -259,6 +260,7 @@ class Config_inc
         }
 
     }
+
     /**
      * @param string $table
      * @param string $column
@@ -281,6 +283,19 @@ class Config_inc
         }
     }
 
+    /**
+     * @param string $name_table
+     * @param array $array_of_you_want
+     * @param string|null $condition
+     * @return bool
+     */
+    public function isExist(string $name_table, array $array_of_you_want, string $condition = null):bool
+    {
+        $result = $this->selectOrSearch($name_table, $array_of_you_want, $condition);
+
+        if (count($result) == 0) return false;
+        return true;
+    }
 
 
     /**
@@ -300,7 +315,7 @@ class Config_inc
         return $arr;
     }
 
-    private static function  createImplode($arr): string
+    private static function createImplode($arr): string
     {
         $str = "";
 
