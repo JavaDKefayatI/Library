@@ -10,7 +10,7 @@ function AllReq(){
             success: function (result) {
                 const req = JSON.parse(result);
                 let t = $('#example').DataTable();
-                
+
                 for (let k in req) {
                     if (req[k]["is_accept"] !=="0")continue;
 
