@@ -9,7 +9,7 @@ $db = new Config_inc("library2");
 
 try {
     if (Users::isLogOut())
-        header("Location:../Library.php");
+        header("Location:../AllBook.php");
 } catch (Exception $e) {
 }
 
@@ -19,7 +19,7 @@ $isPost = !empty($_POST);
 
 if ($isPost) {
     if (Users::checkUser($db, $_POST['user'], $_POST['pass'])) {
-        header('Location:/firstProj/Library.php');
+        header('Location:/firstProj/AllBook.php');
         exit();
     } else
         $error = "Username or password is not correct";

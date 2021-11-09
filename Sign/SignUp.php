@@ -11,7 +11,7 @@ $alert = "";
 
 try {
     if (Users::isLogOut())
-        header("Location:../Library.php");
+        header("Location:../AllBook.php");
 } catch (Exception $e) {
 }
 
