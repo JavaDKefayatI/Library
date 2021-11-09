@@ -3,7 +3,7 @@
 class Users
 {
     // information for user
-    private string $name = "", $family = "", $user = "", $pass = "", $email = "", $phone = "", $key_log = "";
+    private string $name = "", $family = "", $user = "", $pass = "", $email = "", $phone = "", $key_log = "", $id;
 
 
     /**
@@ -15,8 +15,8 @@ class Users
     public function setInformationUser(Config_inc $db, string $keyHash)
     {
         $user = $db->selectOrSearch("users", ['*'], "key_log='" . $keyHash . "'");
-
         if (count($user) > 0) {
+            $this->id = $user[0]["id"];
             $this->name = $user[0]["name"];
             $this->family = $user[0]["family"];
             $this->user = $user[0]["username"];
@@ -40,7 +40,7 @@ class Users
      * @return string if sign up hasn't any alert is true
      */
     public static function signUp(Functions_inc $func, Config_inc $db, string $name, string $family, string $user, string $pass1,
-                                  string $pass2, string $email, string $phone): string
+                                  string        $pass2, string $email, string $phone): string
     {
         $name = Functions_inc::test_input($name);
         $family = Functions_inc::test_input($family);
@@ -176,6 +176,7 @@ class Users
 
         if (isset($_COOKIE['-jk-'])) {
             $key = $_COOKIE['-jk-'];
+
             $this->setInformationUser($db, $key);
 
             $key_log = $this->getKeyLog();
@@ -198,7 +199,7 @@ class Users
      * @return string
      */
 
-    public function checkProfile(Config_inc $db,string $name,string $family,string $phone): string
+    public function checkProfile(Config_inc $db, string $name, string $family, string $phone): string
     {
         $name = Functions_inc::test_input($name);
         $family = Functions_inc::test_input($family);
@@ -281,5 +282,14 @@ class Users
     {
         return $this->key_log;
     }
+
+    /**
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
 
 }
