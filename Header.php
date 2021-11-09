@@ -36,7 +36,7 @@
 
     try {
         if ($user->isLogIn($db))
-            header('Location:sign/SignIn.php');
+            header('Location:Sign/SignIn.php');
 
     } catch (Exception $e) {
 
@@ -59,7 +59,7 @@
     </button>
     <a href="AllBook.php" class="w3-bar-item w3-button">Home</a>
     <a href="AllBook.php" class="w3-bar-item w3-button">Books</a>
-    <a href="RequestPage.php" class="w3-bar-item w3-button">Requests book</a>
+    <a href="RequestsAdmin.php" class=" w3-bar-item w3-button">Admin requests</a>
     <a href="LibraryAdmin.php" class="w3-bar-item w3-button">Edit and create book</a>
     <a href="#" class="w3-bar-item w3-button">About this site</a>
     <a href="Setting.php" class="w3-bar-item w3-button">Setting</a>
