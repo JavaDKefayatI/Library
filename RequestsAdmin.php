@@ -1,29 +1,5 @@
 <?php
 include "Header.php";
-include "includes/Admin.php";
-$admin = new Admin();
-$error = "";
-
-if (isset($_POST['accept'])) {
-    $id_req = $_POST['accept'];
-
-    if ($admin->checkAccept($db, $id_req))
-        $admin->setAccept($db, $id_req);
-    else
-        $error = "this request already exists";
-
-}
-
-if (isset($_POST['reject'])) {
-    $id_req = $_POST['reject'];
-
-    if ($admin->checkAccept($db, $id_req))
-        $admin->reject($db,$id_req);
-    else
-        $error = "this request already exists";
-}
-
-
 ?>
 <script src="front/js/admin/ARequest.js"></script>
 
