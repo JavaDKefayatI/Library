@@ -284,12 +284,49 @@ class Config_inc
     }
 
     /**
+     * @param string $table
+     * @param string $column
+     * @param string $condition
+     */
+
+    public function setCurrentTime(string $table, string $column, string $condition)
+    {
+        try {
+
+            //create base form query
+            $query = "UPDATE " . $table . " SET " . $column . "= now() WHERE " . $condition;
+            $this->connect->exec($query);
+
+        } catch (PDOException $e) {
+            throw $e;
+        }
+    }
+
+    public function InnerJoin(array $array_of_column, string $continue_FROM)
+    {
+        try {
+            $query = "SELECT " . implode(' , ', $array_of_column) . "  FROM " . $firstTable .
+                "  INNER JOIN " . $secondTable . " on ";
+
+            $statement = $this->connect->query($query);
+
+            // get and send all publishers
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            throw $e;
+        }
+
+
+    }
+
+    /**
      * @param string $name_table
      * @param array $array_of_you_want
      * @param string|null $condition
      * @return bool
      */
-    public function isExist(string $name_table, array $array_of_you_want, string $condition = null):bool
+    public function isExist(string $name_table, array $array_of_you_want, string $condition = null): bool
     {
         $result = $this->selectOrSearch($name_table, $array_of_you_want, $condition);
 
@@ -356,6 +393,5 @@ class Config_inc
     {
         return self::$server;
     }
-
 
 }
