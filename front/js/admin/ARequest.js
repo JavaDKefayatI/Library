@@ -12,7 +12,7 @@ function AllReq(){
                 let t = $('#example').DataTable();
 
                 for (let k in req) {
-                    if (req[k]["is_accept"] !=="0")continue;
+                    if (req[k]["status"] !=="0")continue;
 
                     t.row.add([
                         req[k]["id"],
@@ -20,10 +20,32 @@ function AllReq(){
                         req[k]["Name"],
                         req[k]["Author"],
                         req[k]["time_request"],
-                        `<form method='post'><button class='btn btn-success w-75 mb-2' name='accept' value='${req[k]["id"]}'>accept</button>`+
-                        `<button class='btn btn-danger w-75 ' name='reject' value='${req[k]["id"]} '>reject</button></form>`
+                        `<button class='btn btn-success w-75 mb-2' onclick="ruleAdmin(true,${req[k]['id']})" name='accept' >accept</button>`+
+                        `<button class='btn btn-danger w-75 ' name='reject' onclick="ruleAdmin(false,${req[k]['id']})">reject</button>`
                     ]).draw(false);
                 }
+            },
+
+        });
+    })
+
+}
+function ruleAdmin(is_accept , id){
+    $(document).ready(function () {
+        let state="accept";
+    if (!is_accept)
+        state ="reject";
+
+        $.ajax({
+            type: 'GET',
+            url: 'api/CheckAdmin.php?'+state+"="+id,
+            data: 'id=testdata',
+            cache: false,
+            success: function (result) {
+                const status = JSON.parse(result)["status"];
+                if (status==="0")alert("error")
+                if (status === "1") alert("okay")
+
             },
 
         });
