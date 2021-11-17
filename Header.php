@@ -59,8 +59,10 @@
     </button>
     <a href="AllBook.php" class="w3-bar-item w3-button">Home</a>
     <a href="AllBook.php" class="w3-bar-item w3-button">Books</a>
+    <a href="BookUser.php" class="w3-bar-item w3-button">Books user</a>
     <a href="RequestsAdmin.php" class=" w3-bar-item w3-button">Admin requests</a>
     <a href="LibraryAdmin.php" class="w3-bar-item w3-button">Edit and create book</a>
+    <a href="History.php" class="w3-bar-item w3-button">History</a>
     <a href="#" class="w3-bar-item w3-button">About this site</a>
     <a href="Setting.php" class="w3-bar-item w3-button">Setting</a>
 </div>
