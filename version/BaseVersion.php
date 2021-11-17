@@ -67,7 +67,7 @@ $db->createTable('requestbook',
         "id_user int(20) NOT NULL",
         "id_book int(20) NOT NULL",
         "time_request datetime(6) NOT NULL DEFAULT current_timestamp(6)",
-        "time_accept datetime(6)   NULL DEFAULT NULL",
+        "time_check datetime(6)   NULL DEFAULT NULL",
         "time_return datetime(6)   NULL DEFAULT NULL",
         "is_accept int(20) default 0",
         "is_return int(20) default 0",]);
