@@ -23,7 +23,6 @@ function AllBook(){
                         }
 
 
-
                         t.row.add([
                             books[k]["Id"],
                             books[k]["Name"],
