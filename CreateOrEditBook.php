@@ -1,21 +1,5 @@
 <?php
-include "includes/Config_inc.php";
-include "includes/Functions_inc.php";
-include "includes/Users.php";
-include "includes/Books.php";
-
-$func = new Functions_inc();
-$user = new Users();
-$books = new Books();
-$db = new Config_inc("library2");
-
-try {
-    if ($user->isLogIn($db))
-        header('Location:sign/SignIn.php');
-
-} catch (Exception $e) {
-
-}
+include "Header.php";
 
 $state = "Create";
 $name = "";
@@ -27,7 +11,7 @@ $checkIsId = isset($_GET['id']);
 
 if ($checkIsId) {
     $id = $_GET['id'];
-
+    echo $id;
     try {
         $books->setInformationBook($db, $id);
     } catch (Exception $e) {
@@ -39,7 +23,7 @@ if ($checkIsId) {
     $state = "Edit";
 
 }
-+
+
 
 $checkPost = !empty($_POST);
 
@@ -65,7 +49,7 @@ if ($checkPost) {
 
     }
 }
-include "Header.php";
+
 ?>
     <script>
         setTitle("#title", "Create or edit book");
@@ -112,7 +96,7 @@ include "Header.php";
                                 <input type="submit" value="<?= $state ?>"
                                        class="btn float-left btn-dark w-25 mr-3 text-warning">
 
-                                <a href="Library.php"><input type="button" class="btn btn-dark text-warning w-25 "
+                                <a href="LibraryAdmin.php"><input type="button" class="btn btn-dark text-warning w-25 "
                                                              name="create"
                                                              value="Home"
                                     ></a>
