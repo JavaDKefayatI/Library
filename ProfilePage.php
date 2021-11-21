@@ -1,18 +1,5 @@
 <?php
-include "includes/Config_inc.php";
-include "includes/Functions_inc.php";
-include "includes/Users.php";
-
-$user = new Users();
-$db = new Config_inc("library2");
-
-try {
-    if ($user->isLogIn($db))
-        header('Location:sign/SignIn.php');
-
-} catch (Exception $e) {
-
-}
+include "Header.php";
 
 
 $checkPost = !empty($_POST);
@@ -31,7 +18,6 @@ if ($checkPost) {
     $phone = $user->getPhone();
 }
 
-include "Header.php";
 ?>
     <div class="container mt-5 mb-5">
         <div class="d-flex justifly-content-center h-100 ">
