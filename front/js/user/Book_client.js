@@ -10,27 +10,46 @@ function table_for_return(id_user) {
             success: function (result) {
                 const req = JSON.parse(result);
                 let t = $('#example').DataTable();
-                let username = req["username"]
 
-                for (let i = 0; i < req["information"].length; i++) {
 
-                    if (req["information"][i]["is_accept"] === "0" ||
-                        req["information"][i]["is_accept"] === "-1" ||
-                        req["information"][i]["is_return"] === "1"
+                for (let i = 0; i < req.length; i++) {
+
+                    if (req[i]["status"] === "0" ||
+                        req[i]["status"] === "-1" ||
+                        req[i]["status"] === "2"
                     )
                         continue;
 
                         t.row.add([
-                            username,
-                            req["information"][i]["Name"],
-                            req["information"][i]["Author"],
-                            `<form method="post"><button name="id" class="btn btn-danger " 
-                                value="${req["information"][i]["id"]}">Return</button></form>`
+                            req[i]["username"],
+                            req[i]["Name"],
+                            req[i]["Author"],
+                            `<button name="id" class="btn btn-danger " onclick="setReturn(${req[i]["id"]})">Return</button>`
                         ]).draw(false);
 
                 }
             },
 
+
+        });
+    })
+
+}
+function setReturn( id_requet){
+    $(document).ready(function () {
+
+
+        $.ajax({
+            type: 'POST',
+            url: 'api/SetReturn.php?id='+id_requet,
+            data: 'id=testdata',
+            cache: false,
+            success: function (result) {
+                const status = JSON.parse(result)["status"];
+                if (status==="0")alert("error")
+                if (status === "1") alert("okay")
+
+            },
 
         });
     })
