@@ -182,11 +182,11 @@ function setTable() {
                         books[k]["Author"],
                         books[k]["Year"],
                         status,
-                        ` <a href='CreateOrEditBook.php?id={$id}' class='mr-1'>
+                         `<a href="CreateOrEditBook.php?id=${books[k]['Id']}" class='mr-1'>
                         <button  class='fa fa-pencil btn bg-transparent  p-1 '>
                         </button>
                         </a>
-                        <a href='login/DeleteBook.php?id ={$id}'><button  class='fa fa-trash btn bg-transparent p-1' >
+                        <a href='includes/LogOut.php?id =${books[k]['Id']}'><button  class='fa fa-trash btn bg-transparent p-1' >
                         </button>
                         </a>`
                     ]).draw(false);
