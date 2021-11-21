@@ -3,8 +3,6 @@ function user(id_user, id_tbody) {
         let tbody = document.getElementById(id_tbody);
         if (tbody.innerHTML !== "")
             tbody.innerHTML = "";
-
-
         $.ajax({
             type: 'GET',
             url: 'api/RequestUser.php?id_user=' + id_user,
@@ -17,23 +15,24 @@ function user(id_user, id_tbody) {
 
                 let status = "accepted";
 
-                for (let i = 0; i < req["information"].length; i++) {
+                for (let i = 0; i < req.length; i++) {
 
                     status = "accepted";
 
-                    if (req["information"][i]["is_accept"] === "-1")
+                    if (req[i]["is_accept"] === "-1")
                         status = "rejected"
 
-                    if (req["information"][i]["is_accept"] === "0")
+                    if (req[i]["is_accept"] === "0")
                         continue
                     tbody.innerHTML += `<tr>
-                        <td>${username}</td>
-                        <td>${req["information"][i]["Name"]}</td>
-                        <td>${req["information"][i]["Author"]}</td>
+                        <td>${req[i]["username"]}</td>
+                        <td>${req[i]["Name"]}</t        d>
+                        <td>${req[i]["Author"]}</td>
                         <td>${status}</td>
-                        <td>${req["information"][i]["time_check"]}</td>
+                        <td>${req[i]["time_request"]}</td>
+                        <td>${req[i]["time_check"]}</td>
                     </tr>`;
-
+                alert(req[i]["time_check"])
                 }
             },
 
