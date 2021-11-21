@@ -19,7 +19,7 @@ class Admin
         $db->setCurrentTime("requestbook", "time_check", "id_book=" . $id_book . " and status=0");
 
         //change status book
-        $db->edit("books", ["status" => "2"], "Id =" . $id_book);
+        $db->edit("books", ["status" => "1"], "Id =" . $id_book);
 
     }
 
@@ -52,7 +52,7 @@ class Admin
 
     }
 
-    public function createApi($db)
+    public function createApi(Config_inc $db , string $condition)
     {
         try {
             $query = "SELECT
@@ -68,8 +68,7 @@ class Admin
                 users.username
                 FROM((requestbook
                 INNER JOIN users ON users.id = requestbook.id_user)
-                INNER JOIN books ON books.Id = requestbook.id_book);";
-
+                INNER JOIN books ON books.Id = requestbook.id_book) where ".$condition ;
             $statement = $db->connect->query($query);
 
             // get and send all publishers
