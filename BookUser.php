@@ -1,18 +1,5 @@
 <?php
 include "Header.php";
-include "includes/RequestBook.php";
-$req = new RequestBook();
-$error = "";
-if (isset($_POST['id'])) {
-    $id = $_POST['id'];
-    if ($req->checkReturn($db, $id)) {
-        $req->setReturned($db, $id);
-    } else
-        $error = "this book already returned or not exist in your request ";
-
-
-}
-
 
 ?>
 <script src="front/js/user/Book_client.js"></script>
@@ -22,7 +9,6 @@ if (isset($_POST['id'])) {
 
     table_for_return(<?= $user->getId() ?>)
 </script>
-<h3 class="text-danger"><?= $error ?></h3>
 
 <main id="bodyTable " class="mb-4" style="">
 
