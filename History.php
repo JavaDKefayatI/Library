@@ -30,6 +30,7 @@ include "includes/RequestBook.php";
                 <th>Name book</th>
                 <th>Name Author</th>
                 <th>Status</th>
+                <th>Time requested</th>
                 <th>Time checked</th>
             </tr>
             </thead>
@@ -42,6 +43,7 @@ include "includes/RequestBook.php";
                 <th>Name book</th>
                 <th>Name Author</th>
                 <th>Status</th>
+                <th>Time requested</th>
                 <th>Time checked</th>
             </tr>
             </tfoot>
