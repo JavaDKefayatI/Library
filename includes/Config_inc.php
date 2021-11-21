@@ -88,8 +88,9 @@ class Config_inc
             if ($condition != null)
                 $query .= " WHERE " . $condition;
 
+//            echo $query;
+//            die();
             $statement = $this->connect->query($query);
-
             // get and send all publishers
             return $statement->fetchAll(PDO::FETCH_ASSOC);
 
