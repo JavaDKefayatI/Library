@@ -1,8 +1,10 @@
 <?php
 include "../includes/Config_inc.php";
 include "../includes/Users.php";
+include "../includes/Admin.php";
 $db = new Config_inc("library2");
 $user = new Users();
+$admin = new Admin();
 
 try {
     if ($user->isLogIn($db))
@@ -13,19 +15,7 @@ try {
 }
 if (isset($_GET["id_user"])) {
     $id_user = $_GET["id_user"];
-    $req = $db->selectOrSearch("requestbook", ['*'], "id_user = " . $id_user);
-
-    $user = $db->selectOrSearch("users", ["username"], "id = " . $id_user);
-
-    for ($i = 0; $i < count($req); $i++) {
-        $id_user = $req[$i]["id_user"];
-        $id_book = $req[$i]["id_book"];
-
-        $name_book = $db->selectOrSearch("books", ["Name", "Author"], "Id = " . $id_book);
-
-        $req[$i] = $req[$i] + $name_book[0];
-    }
-
-    echo(json_encode(["username" => $user[0]["username"], "information" => $req]));
+    $req =$admin->createApi($db , "id_user =" .$id_user);
+    echo(json_encode($req));
 }
 ?>
