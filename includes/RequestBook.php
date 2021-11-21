@@ -32,7 +32,8 @@ class RequestBook
     public function isRequest(Config_inc $db, string $id_user, string $id_book): bool
     {
 
-        $req = $db->selectOrSearch("requestbook", ["id"], "id_user=" . $id_user . " and id_book =" . $id_book);
+        $req = $db->selectOrSearch("requestbook", ["id"],
+            "id_user=" . $id_user . " and id_book =" . $id_book ." and status=0");
 
         if (count($req) == 0) return false;
         return true;
@@ -46,9 +47,9 @@ class RequestBook
 
     public function checkReturn(Config_inc $db, string $id_request): bool
     {
-        $is_return = $db->selectOrSearch("requestbook", ["is_return"], "id =" . $id_request)[0]["is_accept"];
-        if ($is_return != "0") return false;
-        return true;
+        $status = $db->selectOrSearch("requestbook", ["status"], "id =" . $id_request)[0]["status"];
+        if ($status == "1" ) return true;
+        return false;
 
     }
 
@@ -59,9 +60,9 @@ class RequestBook
 
     public function setReturned(Config_inc $db, string $id)
     {
-        // edit request and set time return and is_accept=1
-        $db->edit("requestbook", ["is_return" => "1"], "id =" . $id);
-        $db->setCurrentTime("requestbook", "is_return", "id =" . $id);
+        // edit request and set time return and status=2
+        $db->edit("requestbook", ["status" => "2"], "id =" . $id);
+        $db->setCurrentTime("requestbook", "time_return", "id =" . $id);
 
         $id_book = $db->selectOrSearch("requestbook", ["id_book"], "id= " . $id)[0]["id_book"];
         $db->edit("books", ["status" => "0"], "Id = " . $id_book);
