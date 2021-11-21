@@ -5,7 +5,7 @@ include "../includes/Functions_inc.php";
 include "../includes/Users.php";
 
 $func = new Functions_inc();
-$connect = new Config_inc("library2");
+$db= new Config_inc("library2");
 $alert = "";
 
 
@@ -18,7 +18,7 @@ try {
 $checkPost = !empty($_POST);
 
 if ($checkPost) {
-    $alert = Users::SignUp($connect, $_POST['name'], $_POST['family'], $_POST['user'],
+    $alert = Users::SignUp($func,$db, $_POST['name'], $_POST['family'], $_POST['user'],
         $_POST['pass'], $_POST['pass-r'], $_POST['email'], $_POST['phone']);
 
     if ($alert == "") {
