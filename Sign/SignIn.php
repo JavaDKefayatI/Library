@@ -6,10 +6,12 @@ include "../includes/Users.php";
 
 $func = new Functions_inc();
 $db = new Config_inc("library2");
-
+$user = new Users();
 try {
-    if (Users::isLogOut())
-        header("Location:../AllBook.php");
+    if ($user->isLogIn($db)==1)
+        header("Location:../user/AllBook.php");
+    elseif ($user->isLogIn($db)==2)
+        header("Location:../Admin/LibraryAdmin.php");
 } catch (Exception $e) {
 }
 
@@ -18,10 +20,13 @@ $error = "";
 $isPost = !empty($_POST);
 
 if ($isPost) {
-    if (Users::checkUser($db, $_POST['user'], $_POST['pass'])) {
-        header('Location:/firstProj/AllBook.php');
+    if (Users::checkUser($db, $_POST['user'], $_POST['pass'])==1) {
+        header('Location:/firstProj/user/AllBook.php');
         exit();
-    } else
+    } elseif (Users::checkUser($db, $_POST['user'], $_POST['pass'])==2){
+        header('Location:/firstProj/admin/LibraryAdmin.php');
+        exit();
+    }else
         $error = "Username or password is not correct";
 }
 
