@@ -4,7 +4,7 @@ function AllReq(){
 
         $.ajax({
             type: 'POST',
-            url: 'api/AllRequest.php',
+            url: '../api/Admin/AllRequest.php',
             data: 'id=testdata',
             cache: false,
             success: function (result) {
@@ -38,13 +38,16 @@ function ruleAdmin(is_accept , id){
 
         $.ajax({
             type: 'GET',
-            url: 'api/CheckAdmin.php?'+state+"="+id,
+            url: '../api/Admin/CheckAdmin.php?'+state+"="+id,
             data: 'id=testdata',
             cache: false,
             success: function (result) {
                 const status = JSON.parse(result)["status"];
                 if (status==="0")alert("error")
-                if (status === "1") alert("okay")
+                if (status === "1") {
+                    alert("okay")
+                    location.reload();
+                }
 
             },
 

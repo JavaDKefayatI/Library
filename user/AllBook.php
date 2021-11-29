@@ -4,7 +4,7 @@ include "Header.php";
 
 
 ?>
-<script src="front/js/user/AllBook.js"></script>
+<script src="../front/js/user/AllBook.js"></script>
 
 <script>
     // setTitle("title", "Library")

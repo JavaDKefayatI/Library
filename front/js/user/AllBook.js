@@ -4,7 +4,7 @@ function AllBook(){
 
             $.ajax({
                 type: 'POST',
-                url: 'api/Books.php',
+                url: '../api/Books.php',
                 data: 'id=testdata',
                 cache: false,
                 success: function (result) {
@@ -41,21 +41,26 @@ function AllBook(){
     }
     function setRequest( id_book){
         $(document).ready(function () {
-
+            let t = $('#example').DataTable();
 
             $.ajax({
                 type: 'POST',
-                url: 'api/SetRequest.php?id_book='+id_book,
+                url: '../api/User/SetRequest.php?id_book='+id_book,
                 data: 'id=testdata',
                 cache: false,
                 success: function (result) {
                     const status = JSON.parse(result)["status"];
                     if (status==="0")alert("this request already exists.")
-                    if (status === "1") alert("okay")
+                    if (status === "1") {
+                        alert("okay")
+                        location.reload();
+                    }
 
                 },
 
             });
+            t.ajax.reload()
+
         })
 
     }

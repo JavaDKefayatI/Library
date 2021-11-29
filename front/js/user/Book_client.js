@@ -4,8 +4,8 @@ function table_for_return(id_user) {
 
         $.ajax({
             type: 'GET',
-            url: 'api/RequestUser.php?id_user=' + id_user,
-            data: 'id=testdata',
+            url: '../api/User/BookUser.php?id_user=' + id_user,
+            data: '',
             cache: false,
             success: function (result) {
                 const req = JSON.parse(result);
@@ -41,14 +41,17 @@ function setReturn( id_requet){
 
         $.ajax({
             type: 'POST',
-            url: 'api/SetReturn.php?id='+id_requet,
+            url: '../api/User/SetReturn.php?id='+id_requet,
             data: 'id=testdata',
             cache: false,
             success: function (result) {
                 const status = JSON.parse(result)["status"];
                 if (status==="0")alert("error")
-                if (status === "1") alert("okay")
+                if (status === "1") {
+                    alert("okay")
+                    location.reload();
 
+                }
             },
 
         });
