@@ -2,10 +2,9 @@
 include "Header.php";
 
 ?>
-<script src="front/js/user/Book_client.js"></script>
+<script src="../front/js/user/Book_client.js"></script>
 
 <script>
-    // setTitle("title", "Library")
 
     table_for_return(<?= $user->getId() ?>)
 </script>
