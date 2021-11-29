@@ -42,6 +42,10 @@ $db->insert("books", ['Name', 'Year', 'Author'], ['gholam', '1300-01-02', 'kabir
 
 // Create table users
 
+//mode user is 0
+//mode admin is 1
+
+
 $db->createTable('users',
     ["id int(5) NOT NULL AUTO_INCREMENT",
         "PRIMARY KEY (`id`)",
@@ -52,6 +56,8 @@ $db->createTable('users',
         "email varchar(200) default NULL",
         "phone varchar(250) NOT NULL",
         "key_log varchar(200) NOT NULL"]);
+
+$db->alter("users","mode INT(4) default 0","key_log");
 
 $db->insert("users",
     ['name', 'family', 'username', 'password', 'email', 'phone', 'key_log'],
