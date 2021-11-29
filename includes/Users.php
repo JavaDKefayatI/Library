@@ -3,7 +3,7 @@
 class Users
 {
     // information for user
-    private string $name = "", $family = "", $user = "", $pass = "", $email = "", $phone = "", $key_log = "", $id;
+    private string $name = "", $family = "", $user = "", $pass = "", $email = "", $phone = "", $key_log = "", $id="",$mode ="";
 
 
     /**
@@ -23,6 +23,7 @@ class Users
             $this->pass = $user[0]["password"];
             $this->phone = $user[0]["phone"];
             $this->key_log = $user[0]["key_log"];
+            $this->mode = $user[0]["mode"];
         } else
             throw new Exception("username not found");
 
@@ -84,7 +85,7 @@ class Users
      * @return bool
      */
 
-    public static function checkUser(Config_inc $db, string $name, string $pass): bool
+    public static function checkUser(Config_inc $db, string $name, string $pass): int
     {
 
         $user = Functions_inc::test_input($name);
@@ -94,18 +95,33 @@ class Users
 
         if (!Functions_inc::isEmpty($list)) {
             $hash_pass = Functions_inc::createHashCode($user . $pass . "Mohammad1234");
-            $is_information = !Functions_inc::unique($db, $user, "username", "users", "password ='" . $hash_pass . "'");
+
+            $is_user = !Functions_inc::unique($db, $user, "username",
+                "users", "password ='" . $hash_pass . "' and mode='0'");
+            $is_admin = !Functions_inc::unique($db, $user, "username", "users",
+                "password ='" . $hash_pass . "' and mode='1'");
+
             $key_log = Functions_inc::createHashCode($user . $pass . "javad1234");
 
-            if ($is_information) {
+            if ($is_admin) {
                 setcookie("-jk-", $key_log, time() + (9000 * 10000), "/");
-                return true;
-            } else
-                return false;
+                return 2;
+            }
+            elseif ($is_user) {
+                setcookie("-jk-", $key_log, time() + (9000 * 10000), "/");
+                return 1;
+            }else
+                return 0;
 
         } else
-            return false;
+            return 0;
 
+    }
+    public function checkMode():bool{
+
+
+
+        return false;
     }
 
     /**
@@ -171,7 +187,7 @@ class Users
      * @return bool
      * @throws Exception
      */
-    public function isLogIn(Config_inc $db): bool
+    public function isLogIn(Config_inc $db): int
     {
 
         if (isset($_COOKIE['-jk-'])) {
@@ -180,14 +196,20 @@ class Users
             $this->setInformationUser($db, $key);
 
             $key_log = $this->getKeyLog();
+//            echo $key ."<br>";
+//            echo $_COOKIE['-jk-'] ."<br>";
+            $check = $key_log == $_COOKIE['-jk-'];
 
-            if ($key_log != $_COOKIE['-jk-'])
-                return true;
-
-            return false;
+            if ($check && $this->getMode()=="0") {
+                return 1;
+            }
+            elseif ($check && $this->getMode()=="1") {
+                return 2;
+            }
+            return 0;
 
         }
-        return true;
+        return 0;
 
     }
 
@@ -289,6 +311,14 @@ class Users
     public function getId(): string
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMode(): string
+    {
+        return $this->mode;
     }
 
 
