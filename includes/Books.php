@@ -10,17 +10,25 @@ class Books
      * @param string $id for book
      * @throws Exception
      */
-    public function setInformationBook(Config_inc $db, string $id)
+    public function setInformationBook(Config_inc $db, string $id):bool
     {
-        $books = $db->selectOrSearch("books", ['*'], "id='" . $id . "'");
+        try {
 
-        if (count($books) > 0) {
-            $this->name_book = $books[0]["Name"];
-            $this->year = $books[0]["Year"];
-            $this->author = $books[0]["Author"];
 
-        } else
-            throw new Exception("id not found");
+            $books = $db->selectOrSearch("books", ['*'], "id='" . $id . "'");
+
+            if (count($books) > 0) {
+                $this->name_book = $books[0]["Name"];
+                $this->year = $books[0]["Year"];
+                $this->author = $books[0]["Author"];
+                return true;
+
+            } else
+                return false;
+
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 
     /**
@@ -30,11 +38,11 @@ class Books
      * @param string $year the year that print
      * @return bool
      */
-    function createBook(Config_inc $db, string $name, string $author, string $year): bool
+    function createBook(Config_inc $db, Functions_inc $func ,string $name, string $author, string $year): bool
     {
-        $name = Functions_inc::test_input($name);
-        $author = Functions_inc::test_input($author);
-        $year = Functions_inc::test_input($year);
+        $name = $func::test_input($name);
+        $author = $func::test_input($author);
+        $year = $func::test_input($year);
 
         $list_of_info = [$name, $author, $year];
 
@@ -68,7 +76,7 @@ class Books
         if (!empty($list_of_info)) {
 
             $db->edit("books", ['Name' => $name, "Year" => $year, "Author" => $author],
-                "id='" . $id . "'");
+                "id='" . $id . "' and status=0");
 
             $this->name_book = $name;
             $this->author = $author;
@@ -86,20 +94,18 @@ class Books
      * @param string $id the id use for set information
      * @return string for error or direct
      */
-    public function editBook(Config_inc $db, string $name, string $author, string $year, string $id): string
+    public function editBook(Config_inc $db, string $name, string $author, string $year, string $id): bool
     {
-        $error = "";
         if ($name == $this->getNameBook() && $author == $this->getAuthor()
             && $year == $this->getYear()) {
-            $error = "Your information has not change<br>";
+            return false;
         } else {
             if ($this->doEdit($db, $name, $author, $year, $id)) {
-                return $error;
+                return true;
             } else {
-                $error = "Your information was not successfully registered<br>";
+                return true;
             }
         }
-        return $error;
     }
 
 
@@ -144,3 +150,4 @@ class Books
 
 
 }
+
