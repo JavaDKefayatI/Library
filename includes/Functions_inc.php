@@ -101,6 +101,8 @@ Request
         $str = $name_data_in_database . "='" . Functions_inc::test_input($data) . "' ";
         if ($condition != "")
             $str .= " AND " . $condition;
+
+
         $result = $db->selectOrSearch($table, [$name_data_in_database], $str);
 
         if (count($result) > 0) return false;
