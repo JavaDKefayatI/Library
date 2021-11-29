@@ -164,7 +164,7 @@ function setTable() {
 
         $.ajax({
             type: 'POST',
-            url: 'api/Books.php',
+            url: '../api/Books.php',
             data: 'id=testdata',
             cache: false,
             success: function (result) {
@@ -172,9 +172,9 @@ function setTable() {
                 let t = $('#example').DataTable();
 
                 for (let k in books) {
-                    let status="Available";
-                    if (books[k]["status"]===1) status="wait";
-                    if (books[k]["status"]===2) status="Unavailable";
+                    let status = "Available";
+                    if (books[k]["status"] === 1) status = "wait";
+                    if (books[k]["status"] === 2) status = "Unavailable";
 
                     t.row.add([
                         books[k]["Id"],
@@ -182,19 +182,52 @@ function setTable() {
                         books[k]["Author"],
                         books[k]["Year"],
                         status,
-                         `<a href="CreateOrEditBook.php?id=${books[k]['Id']}" class='mr-1'>
+                        `<a href="CreateOrEditBook.php?id=${books[k]['Id']}" class='mr-1'>
                         <button  class='fa fa-pencil btn bg-transparent  p-1 '>
                         </button>
-                        </a>
-                        <a href='includes/LogOut.php?id =${books[k]['Id']}'><button  class='fa fa-trash btn bg-transparent p-1' >
+                        </a>    
+                        <button  onclick="deleteBook(${books[k]["Id"]})" class='fa fa-trash btn bg-transparent p-1' >
                         </button>
-                        </a>`
+                        `
                     ]).draw(false);
 
                 }
             },
 
         });
+    })
+
+}
+
+function deleteBook(id) {
+    $(document).ready(function () {
+
+        $('#example').DataTable();
+
+        if (confirm("Are you sure for delete")) {
+
+            $.ajax({
+                type: 'POST',
+                url: '../api/Admin/DeleteBook.php?id=' + id,
+                data: 'id=testdata',
+                cache: false,
+                success: function (result) {
+                    const status = JSON.parse(result)["status"];
+                    if (status === "1") {
+                        alert("deleted");
+                        location.reload();
+
+                    }
+                    if (status === "2")
+                        alert("this book accepted for one user")
+                    if (status === "0")
+                        alert("error");
+
+                },
+
+            });
+
+        }
     })
 
 }
