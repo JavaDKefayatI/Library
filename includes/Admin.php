@@ -3,6 +3,11 @@
 class Admin
 {
     /**
+     * @var string
+     */
+    // information for user
+    private string $name = "", $family = "", $user = "", $pass = "", $email = "", $phone = "", $key_log = "", $id;
+    /**
      * @param Config_inc $db
      * @param string $id_request
      */
@@ -52,7 +57,7 @@ class Admin
 
     }
 
-    public function createApi(Config_inc $db , string $condition)
+    public function createApi(Config_inc $db , string $condition="")
     {
         try {
             $query = "SELECT
@@ -68,7 +73,11 @@ class Admin
                 users.username
                 FROM((requestbook
                 INNER JOIN users ON users.id = requestbook.id_user)
-                INNER JOIN books ON books.Id = requestbook.id_book) where ".$condition ;
+                INNER JOIN books ON books.Id = requestbook.id_book) " ;
+
+            if (!empty($condition)) $query.=" where ".$condition;
+//            echo $query;
+//            die();
             $statement = $db->connect->query($query);
 
             // get and send all publishers
@@ -78,6 +87,13 @@ class Admin
             throw $e;
         }
     }
+
+
+
+
+
+
+
 
 
 }
