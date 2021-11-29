@@ -88,8 +88,7 @@ class Config_inc
             if ($condition != null)
                 $query .= " WHERE " . $condition;
 
-//            echo $query;
-//            die();
+
             $statement = $this->connect->query($query);
             // get and send all publishers
             return $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -152,15 +151,16 @@ class Config_inc
      * @return void  because it's just be delete
      */
 
-    function delete(string $table_name, string $condition): void
+    function delete(string $table_name, string $condition): bool
     {
         try {
             $query = "DELETE FROM " . $table_name . " WHERE " . $condition;
 
-            $this->connect->exec($query);
+            $this->connect->query($query);
+            return true;
 
         } catch (PDOException $e) {
-            throw $e;
+            return false;
         }
 
     }
