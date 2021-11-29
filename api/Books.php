@@ -2,17 +2,17 @@
 include "../includes/Config_inc.php";
 include "../includes/Users.php";
 
-$connect = new Config_inc("library2");
+$db = new Config_inc("library2");
 $user = new Users();
 
 try {
-    if ($user->isLogIn($connect))
+    if ($user->isLogIn($db) == 0)
         header('Location:Sign/SignIn.php');
 
 } catch (Exception $e) {
 
 }
 
-$books = $connect->selectOrSearch("books", ['*']);
+$books = $db->selectOrSearch("books", ['*']);
 echo(json_encode($books));
 
