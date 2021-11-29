@@ -11,8 +11,11 @@ $user = new Users();
 $books = new Books();
 
 try {
-    if ($user->isLogIn($db))
-        header('Location:Sign/SignIn.php');
+    $check = $user->isLogIn($db);
+    if ($check == 0)
+        header('Location:../Sign/SignIn.php');
+    elseif ($check == 2)
+        header('Location:../admin/LibraryAdmin.php');
 
 } catch (Exception $e) {
 

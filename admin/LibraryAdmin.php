@@ -1,7 +1,7 @@
 <?php
 include "Header.php";
 ?>
-<script src="front/js/Functions.js"></script>
+<script src="../front/js/Functions.js"></script>
 <script>
     setTitle("title", "Library")
     setTable()
@@ -9,7 +9,13 @@ include "Header.php";
 </script>
 
 <main id="bodyTable " class="mb-4" style="">
-
+    <div style="margin-right:21%" class=" container mt-4  d-flex justify-content-start">
+        <a href="CreateOrEditBook.php ">
+            <button class='btn  btn-danger w-100 p-3  '>
+                Create a book
+            </button>
+        </a>
+    </div>
     <div class=" mb-4  container mt-4" id="body">
 
 
@@ -45,13 +51,7 @@ include "Header.php";
 
         </table>
     </div>
-    <div style="margin-right:21%" class=" container d-flex justify-content-end ">
-        <a href="CreateOrEditBook.php ">
-            <button class='btn  btn-secondary w-100 p-3  '>
-                Create a book
-            </button>
-        </a>
-    </div>
+
 
 </main>
 

@@ -3,8 +3,6 @@
 include "Header.php";
 
 ?>
-
-
     <main class="my-4 ">
 
         <div class="w3-container">
@@ -25,7 +23,7 @@ include "Header.php";
         function checkVersion() {
             $.ajax({
                 type: 'GET',
-                url: 'api/checkUpdate.php',
+                url: '../api/checkUpdate.php',
                 cache: false,
                 success: function (result) {
                     const status = JSON.parse(result)["status"];

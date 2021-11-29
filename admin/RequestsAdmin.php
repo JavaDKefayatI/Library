@@ -1,7 +1,7 @@
 <?php
 include "Header.php";
 ?>
-<script src="front/js/admin/ARequest.js"></script>
+<script src="../front/js/admin/ARequest.js"></script>
 
 <script>
     AllReq();

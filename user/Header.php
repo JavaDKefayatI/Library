@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
 
     <script src="https://code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>
     <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css"/>
-    <link rel="shortcut icon" type="image/x-icon" href="front/img/768px-Closed_Book_Icon.svg.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../front/img/768px-Closed_Book_Icon.svg.ico"/>
     <link rel="stylesheet" href=
     "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js" type="text/javascript"></script>
@@ -15,18 +14,18 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css"/>
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<!--    <script src="//maxcdn.bootstrapcdn.com/boot strap/4.1.1/js/bootstrap.min.js"></script>-->
+    <!--    <script src="//maxcdn.bootstrapcdn.com/boot strap/4.1.1/js/bootstrap.min.js"></script>-->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <!--    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.2/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="front/css/Library.css">
+    <link rel="stylesheet" href="../front/css/Library.css">
     <?php
-    include "includes/Config_inc.php";
-    include "includes/Functions_inc.php";
-    include "includes/Users.php";
-    include "includes/Books.php";
-    include "includes/Version.php";
+    include "../includes/Config_inc.php";
+    include "../includes/Functions_inc.php";
+    include "../includes/Users.php";
+    include "../includes/Books.php";
+    include "../includes/Version.php";
 
     $func = new Functions_inc();
     $user = new Users();
@@ -35,16 +34,17 @@
     $version = new Version();
 
     try {
-        if ($user->isLogIn($db))
-            header('Location:Sign/SignIn.php');
+        $check = $user->isLogIn($db);
+        if ($check == 0)
+            header('Location:../Sign/SignIn.php');
+        elseif ($check == 2)
+            header('Location:../admin/LibraryAdmin.php');
 
     } catch (Exception $e) {
 
     }
 
-
     ?>
-
 
 </head>
 <body dir="ltr" id="" class="">
@@ -58,11 +58,8 @@
             onclick="w3_close()">Close &times;
     </button>
     <a href="AllBook.php" class="w3-bar-item w3-button">Home</a>
-    <a href="AllBook.php" class="w3-bar-item w3-button">Books</a>
-    <a href="BookUser.php" class="w3-bar-item w3-button">Books user</a>
-    <a href="RequestsAdmin.php" class=" w3-bar-item w3-button">Admin requests</a>
-    <a href="LibraryAdmin.php" class="w3-bar-item w3-button">Edit and create book</a>
-    <a href="History.php" class="w3-bar-item w3-button">History</a>
+    <a href="BookUser.php" class="w3-bar-item w3-button">My books</a>
+    <a href="History.php" class=" w3-bar-item w3-button">History</a>
     <a href="#" class="w3-bar-item w3-button">About this site</a>
     <a href="Setting.php" class="w3-bar-item w3-button">Setting</a>
 </div>
@@ -91,16 +88,23 @@
                     </button>
                 </a>
 
-                <a href="includes/LogOut.php">
+                <a href="../includes/LogOut.php" class="mt-0">
                     <button class="  btn bg-transparent text-white  mt-4 text-center"
                             onclick="">Log out
                     </button>
                 </a>
 
+                <div class="container mt-2 ml-3">
+                    <h4 class="text-transparent text-white   mt-4 text-center">Username : <?=$user->getUser(); ?></h4>
+                </div>
+
             </ul>
-            <form class=" my-2 my-lg-0">
-                <h1 class=" bg-secondary text-white pb-4 display-4  pr-5 ml-auto ">Library</h1>
-            </form>
+            <div class=" my-2 my-lg-0">
+                <a href="AllBook.php"
+                <button class="btn  btn-secondary  bg-transparent text-white pb-4  pr-5 ml-auto "
+                        style="font-size: 60px;border: 0">Library</button>
+                </a>
+            </div>
         </div>
     </nav>
 
