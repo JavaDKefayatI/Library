@@ -1,8 +1,8 @@
 <?php
-include "../includes/RequestBook.php";
-include "../includes/Config_inc.php";
-include "../includes/Users.php";
-include "../includes/Books.php";
+include "../../includes/RequestBook.php";
+include "../../includes/Config_inc.php";
+include "../../includes/Users.php";
+include "../../includes/Books.php";
 
 $db = new Config_inc("library2");
 $user = new Users();

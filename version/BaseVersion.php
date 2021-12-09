@@ -63,6 +63,10 @@ $db->insert("users",
     ['name', 'family', 'username', 'password', 'email', 'phone', 'key_log'],
     ['Javad', 'Kefayati', 'javad936', 'b9b337867d62a2678655ba45f0ea30bd04dc65ef40425040', 'javad936807@gmail.com',
         '09368075504', 'f60a4d9103b2b1bae6b3b4e5fadb88d8a58f712216ff65f0']);
+$db->insert("users",
+    ['name', 'family', 'username', 'password', 'email', 'phone', 'key_log,mode'],
+    ['admin', 'admin', 'root', 'b9b337867d62a2678655ba45f0ea30bd04dc65ef40425040', 'javad936807@gmail.com',
+        '09368075504', 'f60a4d9103b2b1bae6b3b4e5fadb88d8a58f712216ff65f0',1]);
 
 
 // Create table request book
